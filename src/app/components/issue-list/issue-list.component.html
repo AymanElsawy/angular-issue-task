@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="header">
+    <div class="filter">
+      <label for="status-filter">Filter by Status:</label>
+      <select id="status-filter" (change)="filterIssues($event)">
+        <option value="">All</option>
+        @for (status of availableStatuses ; track status) {
+        <option [value]="status">
+          {{ status }}
+        </option>
+
+        }
+      </select>
+    </div>
+    <div class="display-field">
+      <label for="display-options">Display Options:</label>
+      <select id="display-options" (change)="displayOptions($event)">
+        <option value="all">All</option>
+        @for (field of fields; track $index) {
+        <option [value]="field">
+          {{ field }}
+        }
+      </select>
+    </div>
+    <div class="add">
+      <a routerLink="/add-issue">Add Issue</a>
+    </div>
+  </div>
+  <div class="table">
+    <table>
+      <thead></thead>
+      <tbody>
+        <tr>
+          <th>Title</th>
+          <th [ngClass]="showStatusCell ? 'show' : 'hidden'">Status</th>
+          <th [ngClass]="showPriorityCell ? 'show' : 'hidden'">Priority</th>
+          <th [ngClass]="showAssigneeCell ? 'show' : 'hidden'">Actions</th>
+        </tr>
+        @for (issue of issues| filter: statusFilter; track issue.id) {
+        <tr (click)="issueDetails(issue.id)">
+          <td>{{ issue.title }}</td>
+          <td [ngClass]="showStatusCell ? 'show' : 'hidden'">{{ issue.status }}</td>
+          <td [ngClass]="showPriorityCell ? 'show' : 'hidden'">{{ issue.priority }}</td>
+          <td [ngClass]="showAssigneeCell ? 'show' : 'hidden'">
+            <select (change)="updateIssueStatus(issue, $event)">
+              @for (status of availableStatuses; track status) {
+              <option [value]="status">
+                {{ status }}
+              </option>
+              }
+            </select>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

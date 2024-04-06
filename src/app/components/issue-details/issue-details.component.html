@@ -1,0 +1,30 @@
+<section>
+  @if (errorMessage) {
+  <h3>{{ errorMessage }}</h3>
+  }@else {
+  <div class="issue-card">
+    <div class="issue-info">
+      <div class="field">
+        <span class="label">ID:</span>
+        <span class="value">{{ issue.id }}</span>
+      </div>
+      <div class="field">
+        <span class="label">Title:</span>
+        <span class="value">{{ issue.title }}</span>
+      </div>
+      <div class="field">
+        <span class="label">Status:</span>
+        <span class="value">{{ issue.status }}</span>
+      </div>
+      <div class="field">
+        <span class="label">Priority:</span>
+        <span class="value">{{ issue.priority }}</span>
+      </div>
+      <div class="field">
+        <span class="label">Assignee:</span>
+        <span class="value">{{ issue.assignee }}</span>
+      </div>
+    </div>
+  </div>
+  }
+</section>

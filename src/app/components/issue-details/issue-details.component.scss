@@ -1,0 +1,28 @@
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  .issue-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    width: 500px;
+    background-color: #fff;
+    .field {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+
+      .label {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      .value {
+        flex: 1;
+      }
+    }
+  }
+}

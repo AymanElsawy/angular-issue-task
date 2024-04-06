@@ -1,0 +1,39 @@
+<section class="container">
+  <h1>Add Issue</h1>
+  @if (errorMessage) {
+    <h3>{{errorMessage}}</h3>
+  }
+  <form [formGroup]="issueForm" (ngSubmit)="addIssue()">
+    <div class="form-control">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" placeholder="Title" formControlName="title" />
+    </div>
+    <div class="form-control">
+      <label for="status">Status</label>
+      <select name="status" id="status" formControlName="status">
+        @for (option of availableStatuses; track $index) {
+        <option value="{{ option }}">{{ option }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-control">
+      <label for="priority">Priority</label>
+      <select name="priority" id="priority" formControlName="priority">
+        @for (option of availablePriorities; track $index) {
+        <option value="{{ option }}">{{ option }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-control">
+      <label for="assignee">Assignee</label>
+      <input
+        type="text"
+        name="assignee"
+        id="assignee"
+        formControlName="assignee"
+        placeholder="Assignee"
+      />
+    </div>
+    <button type="submit" class="btn">Add</button>
+  </form>
+</section>
